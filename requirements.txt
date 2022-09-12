@@ -1,0 +1,7 @@
+### dependency
+streamlit
+nltk
+sklearn
+
+### local packages -
+-e . 
