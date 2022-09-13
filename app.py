@@ -1,4 +1,5 @@
 import pickle
+import bz2
 import streamlit as st
 import requests
 
@@ -26,7 +27,9 @@ def recommend(movie):
 
 st.header('Movie Recommender System Using Machine Learning')
 movies = pickle.load(open('artifacts/movie_list.pkl','rb'))
-similarity = pickle.load(open('artifacts/similarity.pkl','rb'))
+# similarity = pickle.load(open('artifacts/similarity.pkl','rb'))
+with bz2.BZ2File("artifacts/similarity.pkl", "rb") as f:
+    similarity = pickle.load(f)
 
 movie_list = movies['title'].values
 selected_movie = st.selectbox(
